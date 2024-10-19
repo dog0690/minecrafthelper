@@ -1,4 +1,5 @@
 import sys
+new = open(r"new.txt","r")
 test = open(r"test.txt","r")
 def divider():
     print("==========================")
