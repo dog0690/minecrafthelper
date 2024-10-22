@@ -1,6 +1,8 @@
 import sys
 import os
 test = open(r"test.txt","r")
+#folder_path = 'C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds'
+#contents = os.listdir(folder_path)
 def divider():
     print("==========================")
 def sub_divider():
@@ -37,7 +39,26 @@ def new_save():
     os.chdir(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds")
     os.mkdir(name)
     os.chdir(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds" + r"\\" +name )
+    with open(name, "w+") as file:
+        folder(file, name)
     sub_divider()
+#folder management system
+def folder(file, name):
+    file.write(name)
+    lines = file.readlines()
+    line_count = len(lines)
+    for i in range(line_count):
+        print(i+1, file.readline().strip())
+    choice(input("what do you want to do?\n"))
+
+def folder_input():
+    options = ["A) New Info", "B) Delete Info", "C) Return"]
+    for i in option:
+        print(i)
+    folder_choice(input("what would you like to do?\n"))
+
+def folder_choice(choice):
+    pass
 
 def delete_save():
     world_pos = int(input("Which world do you want to delete?\n"))
@@ -62,8 +83,7 @@ def delete_save():
     choice(input("(Y) Yes or N (No)\n"))
 #Main Menu
 def A():
-    option = ["A) New save", "B) Delete Save", "C) Return"]
-    test = open(r"test.txt","r+")
+    option = ["A) New save", "B) Delete Save","C) Enter world", "D) Return"]
     print("YOUR WORLDS")
     sub_divider()
     
@@ -80,7 +100,9 @@ def A():
             new_save()
         elif option =="b":
             delete_save()
-        elif option =="c":
+        elif option == "c":
+            pass
+        elif option =="d":
             close()
             
     divider()
