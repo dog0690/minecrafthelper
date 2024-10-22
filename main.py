@@ -1,4 +1,5 @@
 import sys
+import os
 test = open(r"test.txt","r")
 def divider():
     print("==========================")
@@ -31,10 +32,12 @@ def new_save():
     sub_divider()
     name = input("What's the name?\n")
     test = open("test.txt", "a")
-    test.write(name+"\n")
-    test.close()
+    #test.write(name+"\n")
+    #test.close()
+    os.chdir(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds")
+    os.mkdir(name)
+    os.chdir(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds" + r"\\" +name )
     sub_divider()
-    A()
 
 def delete_save():
     world_pos = int(input("Which world do you want to delete?\n"))
