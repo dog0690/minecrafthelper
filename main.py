@@ -31,6 +31,7 @@ def world_list():
         (i+1, test.readline())
 #Option A Menu
 def new_save():
+    clear_terminal()
     sub_divider()
     name = input("What's the name?\n")
     test = open("test.txt", "a")
@@ -49,7 +50,7 @@ def folder(file, name):
     line_count = len(lines)
     for i in range(line_count):
         print(i+1, file.readline().strip())
-    choice(input("what do you want to do?\n"))
+    folder_input(input("what do you want to do?\n"))
 
 def folder_input():
     options = ["A) New Info", "B) Delete Info", "C) Return"]
@@ -58,8 +59,14 @@ def folder_input():
     folder_choice(input("what would you like to do?\n"))
 
 def folder_choice(choice):
-    pass
-
+    if option == "a":
+        pass
+    elif option == "b":
+        pass
+    elif option == "c":
+        pass
+    elif option == "d":
+        pass
 def delete_save():
     world_pos = int(input("Which world do you want to delete?\n"))
     world_name = lines[world_pos -1]
@@ -83,6 +90,7 @@ def delete_save():
     choice(input("(Y) Yes or N (No)\n"))
 #Main Menu
 def A():
+    test = open(r"test.txt","r")
     option = ["A) New save", "B) Delete Save","C) Enter world", "D) Return"]
     print("YOUR WORLDS")
     sub_divider()
@@ -101,25 +109,41 @@ def A():
         elif option =="b":
             delete_save()
         elif option == "c":
-            pass
+            C()
         elif option =="d":
             close()
             
     divider()
     choice(input("what do you want to do?\n"))
     divider()
-    
+def C():
+    name = input("What world do you want to enter?\n")
+    world = (r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds"+"\\"+name)
+    os.chdir(world)
+    with open(name, "w+") as file:
+        content = file.read()
+        print(content)
 
 #Menu
 def choice(option):
     
     divider()
     if option == "a":
+        clear_terminal()
         A()
     elif option == "b":
+        clear_terminal()
         close()
+    elif option == "c":
+        C()
     else:
         print("retry")
+        clear_terminal()
         choice()
 
+def clear_terminal():
+    if os.name == "nt":
+        os.system('cls')
+    else:
+        os.system("clear")
 choice(input(""))
