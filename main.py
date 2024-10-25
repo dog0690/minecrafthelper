@@ -30,8 +30,6 @@ def new_save():
     sub_divider()
     name = input("What's the name?\n")
     test = open("test.txt", "a")
-    #test.write(name+"\n")
-    #test.close()
     os.chdir(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds")
     os.mkdir(name)
     os.chdir(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds" + r"\\" +name )
@@ -45,23 +43,6 @@ def folder(file, name):
     line_count = len(lines)
     for i in range(line_count):
         print(i+1, file.readline().strip())
-    folder_input()
-def folder_input():
-    for item in contents:
-        print(item)
-    options = ["A) New Info", "B) Delete Info", "C) Enter World", "D)Return"]
-    for i in option:
-        print(i)
-    folder_choice(input("what would you like to do?\n"))
-def folder_choice(choice):
-    if option == "a":
-        pass
-    elif option == "b":
-        pass
-    elif option == "c":
-        pass
-    elif option == "d":
-        pass
 def delete_save():
     world_pos = int(input("Which world do you want to delete?\n"))
     world_name = lines[world_pos -1]
@@ -116,12 +97,22 @@ def C():
     name = input("What world do you want to enter?\n")
     world = (r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds"+"\\"+name)
     os.chdir(world)
-    with open(name, "w+") as file:
+    with open(name, "a+") as file:
         content = file.read()
         print(content)
-def file_input(world, name):
+        choices = ["A) Add information", "B) Delete Information", "C) Return"]
+        for i in choices:  
+            print(i)
+        c_choice(input("what do you want to do? \n"), name)
     pass
-
+def c_choice(option, name):
+    if option == "a":
+        with open(name, "a") as file:
+            information = input("what do you want to add?\n")
+            file.write(information + "\n")
+            file.close()
+    else:
+        pass
 #Menu
 def choice(option):
     
