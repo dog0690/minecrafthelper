@@ -1,2 +1,0 @@
-make the worlds a file
-delete the worlds
