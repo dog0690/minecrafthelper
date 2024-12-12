@@ -1,0 +1,4 @@
+C:\Users\charl\AppData\Local\Programs\Python\Python313\python.exe
+# Install "requests" package into the Python interpreter located at "/usr/local/bin/python3.8"
+
+python3 pip install mysqlx-connector-python --python "C:\Users\charl\AppData\Local\Programs\Python\Python313\python.exe" 
