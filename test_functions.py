@@ -30,12 +30,15 @@ def test_makew(name, s):
     os.chdir(worlds)
     os.mkdir(name)
     os.chdir(wor)
+    mycursor.execute("CREATE DATABASE buildings")
     with open(name, "w+") as file:
         file.write("first save")
     #Testing Portion
     time.sleep(s)
+    
     os.chdir(worlds)
     shutil.rmtree(wor)
     print('test completed')
+    mycursor.execute("DROP DATABASE buildings")
 world_name = 'test1'
 test_makew(world_name, 5)

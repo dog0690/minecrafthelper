@@ -8,4 +8,4 @@ db = mysql.connector.connect(
 )
 mycursor = db.cursor()
 
-mycursor.execute("CREATE TABLE test(name VARCHAR(50))")
+mycursor.execute("DROP DATABASE buildings")
