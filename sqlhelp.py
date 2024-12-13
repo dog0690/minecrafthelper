@@ -8,4 +8,5 @@ db = mysql.connector.connect(
 )
 mycursor = db.cursor()
 
-mycursor.execute("DROP DATABASE buildings")
+mycursor.execute("DROP DATABASE db")
+mycursor.execute("DROP TABLE buildings")
