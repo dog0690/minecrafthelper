@@ -6,14 +6,8 @@ def main():
     clear_terminal()
     for item in contents:
         print(item)
-    print("what can I help you with today?")
+    print("what can I help you with today?\n")
     multiples(prompt1)
-    answer1 = input("\n")
-    choice(answer1, make_world(), enter_world(), delete_world())
-def make_world():
-    pass
-def enter_world():
-    pass
-def delete_world():
-    pass
+    main_choice(input(""))
+
 main()
