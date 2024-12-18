@@ -1,8 +1,10 @@
 import os
 import mysql.connector
 import time
+import pyuac
 import shutil
 folder_path = (r'C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds')
+contents = os.listdir(folder_path)
 db = mysql.connector.connect(
     host="localhost",
     user='root',
@@ -73,10 +75,10 @@ def make_world(name):
     db_cursor.execute("CREATE TABLE tb (name VARCHAR(50), ID int PRIMARY KEY AUTO_INCREMENT)")
 
 def view_world():
-    print("view world")
-def delete_world():
     print("delete world")
-
+def print_worlds():
+    for item in contents:
+        print(item)
 
 def main_choice(choice):
     if choice == 'a':
@@ -84,7 +86,35 @@ def main_choice(choice):
     elif choice == 'b':
         view_world()
     elif choice == 'c':
+        print_worlds()
         delete_world()
     else:
         print("invalid response")
         choice()
+
+def delete_world():
+    
+    deleted_world = input("what world do you want to delete?\n")
+    worlds = (r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds")
+    wor = (r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds" + r"\\" +deleted_world )
+    db = mysql.connector.connect(
+    host="localhost",
+    user='root',
+    passwd='root',
+    database= deleted_world,
+    )
+    os.chdir(worlds)
+    shutil.rmtree(wor)
+    mycursor = db.cursor()
+    mycursor.execute(f"DROP DATABASE {deleted_world}")
+
+def test_delete():
+    
+    deleted_world = 'testworld4'
+    os.chdir(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds")
+    os.mkdir(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds" + r"\\" +deleted_world)
+    time.sleep(5)
+    os.rmdir(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds" + r"\\" +deleted_world)
+
+    shutil.rmtree(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds" + r"\\" +deleted_world)
+test_delete()
