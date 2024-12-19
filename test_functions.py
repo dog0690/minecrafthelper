@@ -108,13 +108,24 @@ def delete_world():
     mycursor = db.cursor()
     mycursor.execute(f"DROP DATABASE {deleted_world}")
 
-def test_delete():
-    
-    deleted_world = 'testworld4'
-    os.chdir(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds")
-    os.mkdir(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds" + r"\\" +deleted_world)
-    time.sleep(5)
-    os.rmdir(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds" + r"\\" +deleted_world)
 
-    shutil.rmtree(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds" + r"\\" +deleted_world)
-test_delete()
+
+
+#testing delete file
+def test_mkfile():
+    name = 'test1'
+    os.chdir(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds" + r"\\" +name)
+    with open(name, "w+") as file:
+            file.write("first save")
+def test_makdir():
+    folder_name = 'test1'
+    os.mkdir(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds" + r"\\" +folder_name)
+def test_delete():
+    deleted_world = 'test1'
+    #os.chdir(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds" + r"\\" +deleted_world)
+    #os.rmdir(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds" + r"\\" +deleted_world)
+    os.system(r"rmdir C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds" + r"\\" +deleted_world)
+    #shutil.rmtree(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds")
+def test_main():
+    test_delete()
+test_main()
