@@ -75,7 +75,7 @@ def make_world(name):
     db_cursor.execute("CREATE TABLE tb (name VARCHAR(50), ID int PRIMARY KEY AUTO_INCREMENT)")
 
 def view_world():
-    print("delete world")
+    print("view world")
 def print_worlds():
     for item in contents:
         print(item)
