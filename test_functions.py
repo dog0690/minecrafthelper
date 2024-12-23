@@ -72,7 +72,7 @@ def make_world(name):
     with open(name, "w+") as file:
         file.write("first save")
     mycursor.execute(f"CREATE DATABASE IF NOT EXISTS {name}")
-    db_cursor.execute("CREATE TABLE tb (name VARCHAR(50), ID int PRIMARY KEY AUTO_INCREMENT)")
+    db_cursor.execute("CREATE TABLE tb (name VARCHAR(50), building_size VARCHAR(50), purpose VARCHAR(50), block_palette VARCHAR(50), ID int PRIMARY KEY AUTO_INCREMENT)")
 
 def view_world():
     print("view world")
@@ -108,7 +108,7 @@ def delete_world():
     mycursor = db.cursor()
     mycursor.execute(f"DROP DATABASE {deleted_world}")
 
-
+make_world('test')
 
 
 #testing delete file
@@ -128,4 +128,4 @@ def test_delete():
     #shutil.rmtree(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds")
 def test_main():
     test_delete()
-test_main()
+#test_main()
