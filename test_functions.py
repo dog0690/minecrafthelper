@@ -67,8 +67,6 @@ def make_world(name):
     )
     db_cursor = db_world.cursor()
     os.chdir(worlds)
-    os.mkdir(name)
-    os.chdir(wor)
     with open(name, "w+") as file:
         file.write("first save")
     mycursor.execute(f"CREATE DATABASE IF NOT EXISTS {name}")
@@ -87,45 +85,22 @@ def main_choice(choice):
         view_world()
     elif choice == 'c':
         print_worlds()
-        delete_world()
+        delete_world(input("what world do you want to delete?\n"))
     else:
         print("invalid response")
         choice()
 
-def delete_world():
+def delete_world(name):
     
-    deleted_world = input("what world do you want to delete?\n")
     worlds = (r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds")
-    wor = (r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds" + r"\\" +deleted_world )
+    wor = (r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds" + r"\\" +name )
     db = mysql.connector.connect(
     host="localhost",
     user='root',
     passwd='root',
-    database= deleted_world,
+    database= name,
     )
     os.chdir(worlds)
-    shutil.rmtree(wor)
+    os.remove(wor)
     mycursor = db.cursor()
-    mycursor.execute(f"DROP DATABASE {deleted_world}")
-
-make_world('test')
-
-
-#testing delete file
-def test_mkfile():
-    name = 'test1'
-    os.chdir(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds" + r"\\" +name)
-    with open(name, "w+") as file:
-            file.write("first save")
-def test_makdir():
-    folder_name = 'test1'
-    os.mkdir(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds" + r"\\" +folder_name)
-def test_delete():
-    deleted_world = 'test1'
-    #os.chdir(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds" + r"\\" +deleted_world)
-    #os.rmdir(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds" + r"\\" +deleted_world)
-    os.system(r"rmdir C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds" + r"\\" +deleted_world)
-    #shutil.rmtree(r"C:\Users\charl\OneDrive\Desktop\coding\minecrafthelper\worlds")
-def test_main():
-    test_delete()
-#test_main()
+    mycursor.execute(f"DROP DATABASE {name}")
