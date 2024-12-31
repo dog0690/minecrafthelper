@@ -34,7 +34,9 @@ def make_world(name):
     with open(name, "w+") as file:
         file.write("first save")
     mycursor.execute(f"CREATE DATABASE IF NOT EXISTS {name}")
-    db_cursor.execute("CREATE TABLE tb (name VARCHAR(50), building_size VARCHAR(50), purpose VARCHAR(50), block_palette VARCHAR(50), ID int PRIMARY KEY AUTO_INCREMENT)")
+    db_cursor.execute("CREATE TABLE Building Generation (name VARCHAR(50), building_size VARCHAR(50), purpose VARCHAR(50), block_palette VARCHAR(50), ID int PRIMARY KEY AUTO_INCREMENT)")
+    db_cursor.execute("CREATE TABLE Terrain Generation (name VARCHAR(50), ID int PRIMARY KEY AUTO_INCREMENT)")
+    db_cursor.execute("CREATE TABLE tb Cosmetic Generation (name VARCHAR(50), ID int PRIMARY KEY AUTO_INCREMENT)")
 def view_world(name):
     db_world = mysql.connector.connect(
         host="localhost",
